@@ -61,3 +61,11 @@ services:
       - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://127.0.0.1:9092
     depends_on:
       - zookeeper
+  caddy:
+    image: caddy
+    container_name: caddy
+    ports:
+      - 80:80
+    volumes:
+      - ./docker/caddy/caddyfile:/etc/caddy/Caddyfile
+      - ./docker/caddy/data:/data
