@@ -69,3 +69,13 @@ services:
     volumes:
       - ./docker/caddy/caddyfile:/etc/caddy/Caddyfile
       - ./docker/caddy/data:/data
+  search:
+    image: elasticsearch:8.2.3
+    container_name: elasticsearch
+    environment:
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    volumes:
+      - ./docker/elasticsearch/plugins:/usr/share/elasticsearch/plugins
+      - ./docker/elasticsearch/data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
