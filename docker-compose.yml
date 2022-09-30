@@ -81,3 +81,20 @@ services:
       - ./docker/elasticsearch/data:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
+  etcd:
+    image: pachyderm/etcd:v3.5.2
+    container_name: etcd
+    environment:
+      - ALLOW_NONE_AUTHENTICATION=yes
+    ports:
+      - 2379:2379
+    command:
+      - etcd
+      - --name
+      - node1
+      - --initial-advertise-peer-urls
+      - http://0.0.0.0:2380
+      - --listen-client-urls
+      - http://0.0.0.0:2379
+      - --advertise-client-urls
+      - http://0.0.0.0:2379
