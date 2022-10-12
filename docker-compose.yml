@@ -98,3 +98,8 @@ services:
       - http://0.0.0.0:2379
       - --advertise-client-urls
       - http://0.0.0.0:2379
+  nats:
+    image: nats
+    container_name: nats
+    ports:
+      - 4222:4222
