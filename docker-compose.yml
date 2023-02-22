@@ -105,3 +105,14 @@ services:
       - 4222:4222
     command:
       - -js
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - 3003:3000
+    user: root
+    volumes:
+      - ./docker/grafana:/var/lib/grafana
+    environment:
+      - GF_SERVER_ROOT_URL=http://localhost:3000/grafana
+      - GF_SERVER_SERVE_FROM_SUB_PATH=true
