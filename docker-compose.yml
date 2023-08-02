@@ -9,7 +9,8 @@ services:
     ports:
       - 80:80
   mysql:
-    image: mysql/mysql-server
+    #    image: mysql/mysql-server
+    image: mysql
     container_name: mysql
     environment:
       - MYSQL_ROOT_PASSWORD=${mysql_pass}
@@ -126,3 +127,10 @@ services:
       - MEILI_MASTER_KEY=${meilisearch_master_key}
     volumes:
       - ./docker/meilisearch:/meili_data
+  prometheus:
+    image: bitnami/prometheus
+    container_name: prometheus
+    ports:
+      - 9090:9090
+    volumes:
+      - ./docker/prometheus/conf.yml:/opt/bitnami/prometheus/conf/prometheus.yml
