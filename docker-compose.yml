@@ -134,3 +134,11 @@ services:
       - 9090:9090
     volumes:
       - ./docker/prometheus/conf.yml:/opt/bitnami/prometheus/conf/prometheus.yml
+      - ./docker/prometheus/rule.yml:/opt/bitnami/prometheus/conf/rule.yml
+  alertmanager:
+    image: bitnami/alertmanager
+    container_name: alert
+    ports:
+      - 9093:9093
+    volumes:
+      - ./docker/prometheus/alert.yml:/opt/bitnami/alertmanager/conf/config.yml
