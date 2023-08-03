@@ -2,7 +2,7 @@ groups:
   - name: web
     rules:
       - alert: high_req
-        expr: rate(http_total[30s]) > 0.4
+        expr: rate(http_total[30s]) > 0.6
         for: 1m
         annotations:
           summary: "high request"
