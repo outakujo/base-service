@@ -1,0 +1,9 @@
+groups:
+  - name: web
+    rules:
+      - alert: high_req
+        expr: rate(http_total[10s]) > 0.4
+        for: 1m
+        annotations:
+          summary: "high request"
+          description: "{{ $labels.instance }} 请求多"
