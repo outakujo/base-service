@@ -1,0 +1,8 @@
+route:
+  receiver: web
+  group_wait: 5s
+  group_by: [ web ]
+receivers:
+  - name: web
+    webhook_configs:
+      - url: http://192.168.0.109:8089/hook
