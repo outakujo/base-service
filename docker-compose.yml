@@ -153,3 +153,4 @@ services:
       - 5672:5672
     volumes:
       - ./docker/rabbitmq:/var/lib/rabbitmq
+      - ./docker/rabbitmq/enabled_plugins:/etc/rabbitmq/enabled_plugins
