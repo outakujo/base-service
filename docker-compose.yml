@@ -70,7 +70,7 @@ services:
     volumes:
       - ./docker/caddy/caddyfile:/etc/caddy/Caddyfile
       - ./docker/caddy/data:/data
-  search:
+  elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.2.3
     container_name: elasticsearch
     environment:
@@ -174,3 +174,31 @@ services:
     volumes:
       - ./docker/registry/data:/var/lib/registry
       - ./docker/registry/auth:/auth
+  cassandra:
+    image: bitnami/cassandra
+    container_name: cassandra
+    environment:
+      - CASSANDRA_PASSWORD_SEEDER=yes
+      - CASSANDRA_PASSWORD=123456
+      - CASSANDRA_USER=root
+    volumes:
+      - ./docker/cassandra:/bitnami/cassandra
+    ports:
+      - 9042:9042
+  clickhouse:
+    image: bitnami/clickhouse
+    container_name: clickhouse
+    environment:
+      - CLICKHOUSE_MYSQL_PORT=9004
+      - CLICKHOUSE_ADMIN_USER=root
+      - CLICKHOUSE_ADMIN_PASSWORD=123456
+    #    ulimits:
+    #      nofile:
+    #        soft: 262144
+    #        hard: 262144
+    volumes:
+      - ./docker/clickhouse:/bitnami/clickhouse
+    ports:
+      - 9000:9000
+      - 8123:8123
+#      - 9004:9004
