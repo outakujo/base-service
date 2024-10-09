@@ -201,4 +201,11 @@ services:
     ports:
       - 9000:9000
       - 8123:8123
-#      - 9004:9004
+  #      - 9004:9004
+  ai-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: ai-webui
+    #    volumes:
+    #      - ./docker/ai-webui:/app/backend/data
+    ports:
+      - 3000:8080
